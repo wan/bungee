@@ -6,7 +6,6 @@ A given SearchModel supports exactly ONE index.
 """
 import const
 import exception
-import inspect
 import warnings
 
 from field import SearchField
@@ -110,11 +109,8 @@ class SearchModelMeta(type):
             mapping = mappings[doc_type]
             for field in mapping.values():
                 if hasattr(cls, field._field_name):
-                    import inspect
                     warnings.warn('Field "%s" is already defined for document \
 type %s' % (field._field_name, doc_type))
-                    frame = inspect.getouterframes(inspect.currentframe(), 2)
-                    warnings.warn(frame[1][3])
                 setattr(cls, field._field_name, field)
 
         # Special cases - add fields for doc type and id
