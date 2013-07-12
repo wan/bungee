@@ -117,7 +117,7 @@ Notes
 -----
 - Mapped ElasticSearch field names will be converted to Python identifiers.
 For example, given the mapping:
-```json
+```
     { user: {
         properties: {
             user name: { type: string }
