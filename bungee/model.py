@@ -63,7 +63,7 @@ class SearchModelMeta(type):
         key = cls.index_name
         if key not in INDEX_MAPPINGS:
             mappings = cls.connection.get_mapping(index=cls.index_name)
-            INDEX_MAPPINGS[key] = cls.parse_mapping(mappings[key])
+            INDEX_MAPPINGS[key] = cls.parse_mapping(mappings.values()[0])
         return INDEX_MAPPINGS[key]
 
     def delete_field_mappings(cls):
